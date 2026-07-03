@@ -1,0 +1,92 @@
+/** @type {import('tailwindcss').Config} */
+export default {
+  content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
+  theme: {
+    extend: {
+      colors: {
+        pure: {
+          50: '#f5f0eb',
+          100: '#ede4d9',
+          200: '#d9c8b3',
+          300: '#c4a98a',
+          400: '#b08d66',
+          500: '#9c7450',
+          600: '#7d5d40',
+          700: '#5e4632',
+          800: '#3f2e22',
+          900: '#241a13',
+        },
+        bloom: {
+          50: '#f0f7fa',
+          100: '#dbeef5',
+          200: '#b8d4e3',
+          300: '#8bb8cf',
+          400: '#5c9bb8',
+          500: '#3c7f9e',
+          600: '#2d6482',
+          700: '#1f4a64',
+          800: '#133247',
+          900: '#0a1c2a',
+        },
+        navy: {
+          DEFAULT: '#1a1a2e',
+          50: '#e8e8ee',
+          100: '#c5c5d5',
+          200: '#9e9eb9',
+          300: '#77779d',
+          400: '#5a5a8a',
+          500: '#3d3d77',
+          600: '#2d2d63',
+          700: '#1f1f4f',
+          800: '#1a1a2e',
+          900: '#0f0f1e',
+        },
+        cream: {
+          DEFAULT: '#f5f0eb',
+          50: '#fefdfc',
+          100: '#fdf9f5',
+          200: '#faf3eb',
+          300: '#f5f0eb',
+          400: '#ede4d9',
+          500: '#e0d4c5',
+          600: '#d0c0ab',
+          700: '#b8a48a',
+          800: '#a08c70',
+          900: '#887458',
+        },
+      },
+      fontFamily: {
+        serif: ['Playfair Display', 'Georgia', 'Times New Roman', 'serif'],
+        sans: ['Inter', 'system-ui', 'Arial', 'sans-serif'],
+      },
+      animation: {
+        'float': 'float 6s ease-in-out infinite',
+        'float-delayed': 'float 6s ease-in-out 2s infinite',
+        'pulse-slow': 'pulse 3s ease-in-out infinite',
+        'shimmer': 'shimmer 2s linear infinite',
+        'spin-slow': 'spin 8s linear infinite',
+        'marquee': 'marquee 25s linear infinite',
+        'fade-in': 'fadeIn 0.6s ease-out',
+      },
+      keyframes: {
+        float: {
+          '0%, 100%': { transform: 'translateY(0px)' },
+          '50%': { transform: 'translateY(-20px)' },
+        },
+        shimmer: {
+          '0%': { backgroundPosition: '-200% 0' },
+          '100%': { backgroundPosition: '200% 0' },
+        },
+        marquee: {
+          '0%': { transform: 'translateX(0)' },
+          '100%': { transform: 'translateX(-50%)' },
+        },
+        fadeIn: {
+          '0%': { opacity: '0', transform: 'translateY(20px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
+        },
+      },
+    },
+  },
+  plugins: [],
+};
