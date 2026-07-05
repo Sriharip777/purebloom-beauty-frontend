@@ -1,192 +1,176 @@
 # PureBloom Beauty
 
-A production-ready full-stack beauty affiliate marketing platform built with React, Node.js, Express, and MongoDB.
+A full-stack beauty affiliate marketing platform with admin dashboard, 3D UI components, dark mode, and Android app conversion target.
 
-## Brand Identity
+**Frontend:** React 18 + Vite + Tailwind CSS 3 + Framer Motion  
+**Backend:** Node.js + Express + MongoDB + Mongoose  
+**Target Platform:** Web + Android (conversion in progress)
 
-**PureBloom Beauty** is a curated beauty discovery platform where elegance meets modern luxury. The platform features a sophisticated powder blue, cream, and navy visual system with editorial-style layouts and premium animations.
+---
 
-## Tech Stack
+## Brand
 
-### Frontend
-- React 18 + Vite
-- Tailwind CSS 3
-- Framer Motion (cinematic animations)
-- React Router DOM 6
-- Axios
-- Context API (state management)
-- React Hot Toast
-- React Icons
+- **Colors:** Blush pink (`#F4C6CE`), beige (`#C9A47E`), navy near-black (`#1A1A1A`)
+- **Fonts:** Playfair Display (serif headings), Inter (sans-serif body)
+- **Tone:** Elegant, editorial, modern luxury
 
-### Backend
-- Node.js + Express.js
-- MongoDB + Mongoose
-- JWT Authentication
-- bcrypt Password Hashing
-- Nodemailer (SMTP email)
-- Express Rate Limiting
-- Helmet Security
-
-### Integrations
-- Amazon Affiliate Links
-- WhatsApp Click-to-Chat
-- SMTP Email (Gmail)
-- Optional: Cloudinary, MCP Server
+---
 
 ## Features
 
-### Public
-- Cinematic hero with parallax and floating animations
-- Curated product discovery grid (Pinterest-style)
-- Category browsing with mega menu
-- Trending / Best Sellers / Deals sections
-- Product details with affiliate redirect
-- Quick View modal
-- Compare up to 3 products
-- Wishlist (localStorage)
-- Search with filters
-- Newsletter subscription
-- Contact form with email notification
-- WhatsApp click-to-chat
-- Social sharing (Pinterest, Twitter, Facebook)
-- Smooth page transitions and scroll reveals
-- Shimmer skeleton loaders
-- Accessibility (reduced-motion support)
+### Public Pages
+- Cinematic hero with particle sparkle effect (left-half only)
+- 3D rotating image carousels (ImageSlider3D)
+- Lightswind-style angled slider (Trending Products)
+- 3D tilt product cards with cursor-following rotation
+- Interactive glow cards (WhyPureBloom)
+- Holographic image card with color-shifting overlay
+- Dark mode toggle with localStorage persistence
+- Product grid with filters, search, categories
+- Product details with affiliate Amazon redirect
+- Quick View modal + Wishlist (localStorage)
+- Newsletter subscription, contact form
+- WhatsApp floating button with pulse animation
+- Responsive design (mobile-first)
 
-### Admin
-- Secure JWT authentication
-- Forgot / Reset / Change password
-- Dashboard with key metrics
-- Manage products (CRUD)
-- Manage categories (CRUD)
+### Admin Panel (JWT-protected)
+- Dashboard with metrics & charts
+- CRUD management for products & categories
+- Image upload with preview (multer, 20MB limit)
 - Analytics dashboard
-- Contact message management
-- Subscriber management
-- WhatsApp click tracking
+- Contact message & subscriber management
+- Password reset flow
+
+### Interactions & Animations
+- Framer Motion staggered entrance animations
+- 3D tilt on hover (sprung motion values)
+- Aurora text glow effect on headings
+- Angled 3D cards with infinite auto-scroll
+- Starry night sky background (dark mode, About page)
+- Particle orbit cursor effect (global)
+- Smooth scroll reveals with `whileInView`
+- Card hover: translateY(-3px) + shadow elevation
+
+---
+
+## Tech Stack
+
+| Layer | Tools |
+|-------|-------|
+| Frontend | React 18, Vite 5, Tailwind CSS 3, Framer Motion 11 |
+| Backend | Express.js, Mongoose, JWT, bcryptjs |
+| Database | MongoDB (local or Atlas) |
+| Email | Nodemailer (SMTP) |
+| Uploads | Multer (local `/uploads` storage) |
+| Icons | react-icons, lucide-react |
+| Particles | @tsparticles/react (sparkles) |
+
+---
+
+## Project Structure
+
+```
+purebloom-beauty/
+├── client/                    # React frontend (Vite)
+│   ├── src/
+│   │   ├── assets/images/     # Local images (cover.png, mybrand.png)
+│   │   ├── components/
+│   │   │   ├── common/        # ProductCard, AngledSlider, ImageSlider3D, etc.
+│   │   │   ├── home/          # HeroSection, WhyPureBloom, FeaturedCategories
+│   │   │   ├── layout/        # Header, Footer, MainLayout
+│   │   │   └── ui/            # AuroraTextEffect, StarsBg, SparklesCore
+│   │   ├── context/           # WishlistContext
+│   │   ├── lib/               # cn() utility
+│   │   ├── pages/
+│   │   │   ├── public/        # Home, About, Contact, ProductDetails, etc.
+│   │   │   └── admin/         # Dashboard, ManageProducts, Analytics, etc.
+│   │   ├── services/          # API layer (axios)
+│   │   └── styles/            # index.css (Tailwind + custom classes)
+│   ├── tailwind.config.js
+│   └── vite.config.js
+├── server/                    # Express backend
+│   ├── src/
+│   │   ├── config/            # DB connection
+│   │   ├── controllers/       # Auth, product, category, contact, etc.
+│   │   ├── middleware/        # Auth middleware
+│   │   ├── models/            # Mongoose schemas
+│   │   ├── routes/            # API route definitions
+│   │   ├── seed/              # Database seeder + Amazon fetcher
+│   │   └── index.js           # Server entry
+│   └── uploads/               # Uploaded images (served statically)
+└── README.md
+```
+
+---
 
 ## Quick Start
 
 ### Prerequisites
 - Node.js 18+
-- MongoDB (local or Atlas URI)
+- MongoDB (local or Atlas)
 
-### 1. Clone and Install
+### Setup
 
 ```bash
-cd purebloom-beauty
+# Install dependencies
+cd server && npm install
+cd ../client && npm install
 
-# Install server dependencies
-cd server
-npm install
+# Configure environment
+# Edit server/.env (see below)
 
-# Install client dependencies
-cd ../client
-npm install
+# Seed database (creates admin + sample data)
+cd ../server && npm run seed
+
+# Run development
+# Terminal 1:
+cd server && npm run dev          # Backend on :5000
+# Terminal 2:
+cd client && npm run dev          # Frontend on :5173
 ```
 
-### 2. Environment Variables
-
-Edit `server/.env` with your values:
+### Environment Variables (`server/.env`)
 
 ```env
 MONGODB_URI=mongodb+srv://<user>:<pass>@cluster.mongodb.net/purebloom
-JWT_SECRET=your_jwt_secret_key
+JWT_SECRET=your_jwt_secret
 SMTP_HOST=smtp.gmail.com
 SMTP_PORT=587
 SMTP_USER=your-email@gmail.com
 SMTP_PASS=your-app-password
-ADMIN_EMAIL=admin@purebloom.com
-ADMIN_PASSWORD=your-admin-password
+ADMIN_EMAIL=sriharipechettis@gmail.com
+ADMIN_PASSWORD=Srihari@777
 ```
 
-### 3. Seed Database
-
-```bash
-cd server
-npm run seed
-```
-
-This creates:
-- 1 admin user
-- 8 categories
-- 23 products
-- 5 sample contact messages
-- 5 newsletter subscribers
-
-**Default Admin Login:**
-- Email: `srihariharipechettis@gmail.com`
-- Password: `PureBloomAdmin2026`
-
-### 4. Run Development
-
-```bash
-# Terminal 1 - Backend (port 5000)
-cd server
-npm run dev
-
-# Terminal 2 - Frontend (port 5173)
-cd client
-npm run dev
-```
-
-Visit `http://localhost:5173` for the frontend.
-Visit `http://localhost:5173/admin/login` for admin panel.
-
-## API Endpoints
-
-### Public
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| GET | /api/products | List products (with filters) |
-| GET | /api/products/slug/:slug | Get product by slug |
-| GET | /api/categories | List categories |
-| POST | /api/contact | Submit contact form |
-| POST | /api/subscribers | Subscribe to newsletter |
-| POST | /api/analytics/track | Track generic click |
-| POST | /api/whatsapp/track | Track WhatsApp click |
-
-### Auth
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| POST | /api/auth/login | Admin login |
-| GET | /api/auth/me | Get current user |
-| POST | /api/auth/forgot-password | Request password reset |
-| POST | /api/auth/reset-password/:token | Reset password |
-| POST | /api/auth/change-password | Change password (auth) |
-
-### Admin (Protected)
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| GET | /api/dashboard/stats | Dashboard statistics |
-| POST/PUT/DELETE | /api/products | Manage products |
-| POST/PUT/DELETE | /api/categories | Manage categories |
-| GET | /api/analytics | Analytics data |
-| GET/PATCH | /api/contact | Manage messages |
-| GET/DELETE | /api/subscribers | Manage subscribers |
-
-## MCP Server
-
-The MCP server runs on port 4000 and exposes:
-- `get_products` - List products with filters
-- `get_product_by_slug` - Get single product
-- `list_categories` - List all categories
-- `add_product` - Create a product
-- `track_click` - Track a click event
-- `get_analytics_summary` - Get analytics
-- `create_contact_message` - Submit contact form
-
-## Visual Design
-
-- **Colors:** Powder blue (bloom), warm cream, deep navy
-- **Typography:** Playfair Display (serif headings), Inter (sans-serif body)
-- **Animations:** Framer Motion staggered reveals, parallax, floating elements
-- **Layout:** Editorial spacing, rounded corners, pill-shaped CTAs
-
-## Contact
-
-**Email:** srihariharipechettis@gmail.com
-**WhatsApp:** Available via floating button
+### Default Admin
+- Email: `sriharipechettis@gmail.com`
+- Password: `Srihari@777`
 
 ---
 
-Built with love for beauty discovery. ✨
+## API Overview
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | `/api/products` | List products (filterable) |
+| GET | `/api/products/slug/:slug` | Product by slug |
+| GET | `/api/categories` | List categories |
+| POST | `/api/contact` | Submit contact form |
+| POST | `/api/subscribers` | Subscribe to newsletter |
+| POST | `/api/auth/login` | Admin login |
+| GET/POST/PUT/DELETE | `/api/products` | Admin CRUD |
+| GET/POST/PUT/DELETE | `/api/categories` | Admin CRUD |
+| POST | `/api/upload` | Image upload (max 20MB) |
+| GET | `/api/dashboard/stats` | Dashboard stats |
+
+---
+
+## Android Conversion
+
+This project is being converted to an Android application. The web frontend architecture (React components, API layer, auth flow) serves as the reference implementation for the Android port.
+
+---
+
+## License
+
+MIT

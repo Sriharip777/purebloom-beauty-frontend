@@ -78,14 +78,14 @@ export default function ManageCategoriesPage() {
     }
   };
 
-  if (loading) return <div className="text-center py-12"><div className="w-10 h-10 border-4 border-navy/20 border-t-navy rounded-full animate-spin mx-auto" /></div>;
+  if (loading) return <div className="text-center py-12"><div className="w-10 h-10 border-4 border-navy/20 dark:border-navy-700 border-t-navy dark:border-t-navy-300 rounded-full animate-spin mx-auto" /></div>;
 
   return (
     <div>
       <div className="flex items-center justify-between mb-6">
         <div>
-          <h1 className="font-serif text-2xl lg:text-3xl text-navy">Categories</h1>
-          <p className="text-sm text-navy/40 font-sans">{categories.length} categories</p>
+          <h1 className="font-serif text-2xl lg:text-3xl text-navy dark:text-cream-100">Categories</h1>
+          <p className="text-sm text-navy/40 dark:text-navy-300 font-sans">{categories.length} categories</p>
         </div>
         <button onClick={() => { setEditing(null); setForm({ name: '', description: '', image: '' }); setShowForm(true); }} className="btn-primary text-[10px] px-5 py-2.5 flex items-center gap-1.5">
           <HiOutlinePlus size="14" /> Add Category
@@ -93,23 +93,23 @@ export default function ManageCategoriesPage() {
       </div>
 
       {showForm && (
-        <div className="bg-white rounded-2xl card-shadow p-6 mb-6 max-w-lg">
-          <h3 className="font-serif text-lg text-navy mb-4">{editing ? 'Edit Category' : 'New Category'}</h3>
+        <div className="bg-white dark:bg-navy-800 rounded-2xl card-shadow p-6 mb-6 max-w-lg">
+          <h3 className="font-serif text-lg text-navy dark:text-cream-100 mb-4">{editing ? 'Edit Category' : 'New Category'}</h3>
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
-              <label className="block text-xs font-medium text-navy/60 font-sans mb-1">Name *</label>
-              <input type="text" value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} className="w-full px-4 py-2.5 bg-cream-50 rounded-xl border border-cream-200 focus:border-navy/30 focus:outline-none font-sans text-sm text-navy" required />
+              <label className="block text-xs font-medium text-navy/60 dark:text-navy-300 font-sans mb-1">Name *</label>
+              <input type="text" value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} className="w-full px-4 py-2.5 bg-cream-50 dark:bg-navy-800 rounded-xl border border-cream-200 dark:border-navy-700 focus:border-navy/30 dark:focus:border-navy-400 focus:outline-none font-sans text-sm text-navy dark:text-cream-100" required />
             </div>
             <div>
-              <label className="block text-xs font-medium text-navy/60 font-sans mb-1">Description</label>
-              <textarea value={form.description} onChange={(e) => setForm({ ...form, description: e.target.value })} rows="2" className="w-full px-4 py-2.5 bg-cream-50 rounded-xl border border-cream-200 focus:border-navy/30 focus:outline-none font-sans text-sm text-navy resize-none" />
+              <label className="block text-xs font-medium text-navy/60 dark:text-navy-300 font-sans mb-1">Description</label>
+              <textarea value={form.description} onChange={(e) => setForm({ ...form, description: e.target.value })} rows="2" className="w-full px-4 py-2.5 bg-cream-50 dark:bg-navy-800 rounded-xl border border-cream-200 dark:border-navy-700 focus:border-navy/30 dark:focus:border-navy-400 focus:outline-none font-sans text-sm text-navy dark:text-cream-100 resize-none" />
             </div>
             <div>
-              <label className="block text-xs font-medium text-navy/60 font-sans mb-1">Image</label>
+              <label className="block text-xs font-medium text-navy/60 dark:text-navy-300 font-sans mb-1">Image</label>
               <div
                 onClick={() => fileInputRef.current?.click()}
                 className={`relative flex items-center justify-center w-full h-28 rounded-xl border-2 border-dashed cursor-pointer transition-colors overflow-hidden ${
-                  form.image ? 'border-emerald-300 bg-emerald-50/50' : 'border-cream-300 bg-cream-50 hover:border-bloom-300'
+                  form.image ? 'border-emerald-300 dark:border-emerald-500 bg-emerald-50/50 dark:bg-emerald-500/10' : 'border-cream-300 dark:border-navy-600 bg-cream-50 dark:bg-navy-800 hover:border-bloom-300 dark:hover:border-bloom-500'
                 }`}
               >
                 {form.image ? (
@@ -118,18 +118,18 @@ export default function ManageCategoriesPage() {
                     <button
                       type="button"
                       onClick={(e) => { e.stopPropagation(); setForm({ ...form, image: '' }); }}
-                      className="absolute top-1 right-1 w-5 h-5 bg-white/80 rounded-full text-navy/60 hover:text-red-500 text-xs flex items-center justify-center"
+                      className="absolute top-1 right-1 w-5 h-5 bg-white/80 dark:bg-navy-800/80 rounded-full text-navy/60 dark:text-navy-300 hover:text-red-500 dark:hover:text-red-400 text-xs flex items-center justify-center"
                     >×</button>
                   </>
                 ) : (
                   <div className="text-center">
-                    <HiOutlinePhotograph size="22" className="mx-auto text-navy/30 mb-1" />
-                    <p className="text-xs text-navy/40 font-sans">Click to upload image</p>
+                    <HiOutlinePhotograph size="22" className="mx-auto text-navy/30 dark:text-navy-500 mb-1" />
+                    <p className="text-xs text-navy/40 dark:text-navy-300 font-sans">Click to upload image</p>
                   </div>
                 )}
                 {uploading && (
-                  <div className="absolute inset-0 bg-white/70 flex items-center justify-center">
-                    <div className="w-6 h-6 border-2 border-navy/20 border-t-navy rounded-full animate-spin" />
+                  <div className="absolute inset-0 bg-white/70 dark:bg-navy-800/70 flex items-center justify-center">
+                    <div className="w-6 h-6 border-2 border-navy/20 dark:border-navy-700 border-t-navy dark:border-t-navy-300 rounded-full animate-spin" />
                   </div>
                 )}
                 <input ref={fileInputRef} type="file" accept="image/*" onChange={handleImageUpload} className="hidden" />
@@ -137,7 +137,7 @@ export default function ManageCategoriesPage() {
             </div>
             <div className="flex gap-3">
               <button type="submit" className="btn-primary text-xs py-2.5">{editing ? 'Update' : 'Create'}</button>
-              <button type="button" onClick={() => setShowForm(false)} className="text-xs text-navy/40 hover:text-navy font-sans px-4">Cancel</button>
+              <button type="button" onClick={() => setShowForm(false)} className="text-xs text-navy/40 dark:text-navy-300 hover:text-navy dark:hover:text-cream-100 font-sans px-4">Cancel</button>
             </div>
           </form>
         </div>
@@ -145,17 +145,17 @@ export default function ManageCategoriesPage() {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {categories.map((cat) => (
-          <motion.div key={cat._id} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="bg-white rounded-2xl card-shadow p-5 flex items-center justify-between">
+          <motion.div key={cat._id} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="bg-white dark:bg-navy-800 rounded-2xl card-shadow p-5 flex items-center justify-between">
             <div className="flex items-center gap-3">
               {cat.image && <img src={cat.image} alt="" className="w-12 h-12 rounded-xl object-cover" />}
               <div>
-                <h3 className="font-serif text-base text-navy">{cat.name}</h3>
-                <p className="text-xs text-navy/40 font-sans">{cat.productCount || 0} products</p>
+                <h3 className="font-serif text-base text-navy dark:text-cream-100">{cat.name}</h3>
+                <p className="text-xs text-navy/40 dark:text-navy-300 font-sans">{cat.productCount || 0} products</p>
               </div>
             </div>
             <div className="flex items-center gap-2">
-              <button onClick={() => handleEdit(cat)} className="p-1.5 text-navy/40 hover:text-navy"><HiOutlinePencil size="15" /></button>
-              <button onClick={() => handleDelete(cat._id)} className="p-1.5 text-navy/40 hover:text-red-500"><HiOutlineTrash size="15" /></button>
+              <button onClick={() => handleEdit(cat)} className="p-1.5 text-navy/40 dark:text-navy-500 hover:text-navy dark:hover:text-cream-100"><HiOutlinePencil size="15" /></button>
+              <button onClick={() => handleDelete(cat._id)} className="p-1.5 text-navy/40 dark:text-navy-500 hover:text-red-500 dark:hover:text-red-400"><HiOutlineTrash size="15" /></button>
             </div>
           </motion.div>
         ))}

@@ -55,16 +55,16 @@ export default function WhyPureBloom() {
             className="relative"
           >
             <HolographicCard>
-              <div className="aspect-[4/5] overflow-hidden">
+              <div className="aspect-[3/4] overflow-hidden">
                 <img
                   src={coverImg}
                   alt="PureBloom Beauty curation"
                   className="w-full h-full object-cover"
                 />
               </div>
-              <div className="absolute -bottom-5 -left-5 bg-white/90 backdrop-blur-sm p-5 max-w-[200px] shadow-lg">
-                <p className="font-serif text-lg text-navy">50+</p>
-                <p className="text-[10px] text-navy-400 uppercase tracking-widest font-sans">Premium Brands</p>
+              <div className="absolute -bottom-4 -left-4 bg-white/95 backdrop-blur-sm p-4 max-w-[180px] shadow-lg rounded-xl border border-cream-100">
+                <p className="font-serif text-base text-navy">50+</p>
+                <p className="text-[9px] text-navy-400 uppercase tracking-[0.2em] font-sans font-medium">Premium Brands</p>
               </div>
             </HolographicCard>
           </motion.div>
@@ -84,10 +84,10 @@ export default function WhyPureBloom() {
                 borderRadius="1rem"
                 rotationFactor={0.35}
               >
-                <div className="p-6 bg-white dark:bg-navy-800">
-                  <reason.icon className="text-bloom-400 mb-4" size="24" />
-                  <h3 className="font-serif text-base text-navy dark:text-cream-100 mb-2">{reason.title}</h3>
-                  <p className="text-sm text-navy-500 dark:text-navy-300 font-sans leading-relaxed">{reason.description}</p>
+                <div className="p-5 bg-white dark:bg-navy-800">
+                  <reason.icon className="text-bloom-400 mb-3" size="22" />
+                  <h3 className="font-serif text-sm font-bold text-navy dark:text-cream-100 mb-1.5">{reason.title}</h3>
+                  <p className="text-xs text-navy-500 dark:text-navy-300 font-sans leading-relaxed">{reason.description}</p>
                 </div>
               </InteractiveCard>
             </motion.div>

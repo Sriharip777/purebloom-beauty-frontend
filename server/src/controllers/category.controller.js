@@ -53,15 +53,13 @@ exports.updateCategory = async (req, res) => {
 
 exports.deleteCategory = async (req, res) => {
   try {
-    const productCount = await Product.countDocuments({ category: req.params.id });
-    if (productCount > 0) {
-      return res.status(400).json({ success: false, message: `Cannot delete category with ${productCount} existing products` });
-    }
-    const category = await Category.findByIdAndDelete(req.params.id);
+    const category = await Category.findById(req.params.id);
     if (!category) {
       return res.status(404).json({ success: false, message: 'Category not found' });
     }
-    res.json({ success: true, message: 'Category deleted' });
+    const deletedCount = await Product.deleteMany({ category: req.params.id });
+    await Category.findByIdAndDelete(req.params.id);
+    res.json({ success: true, message: `Category deleted with ${deletedCount.deletedCount} associated products` });
   } catch (error) {
     res.status(500).json({ success: false, message: error.message });
   }

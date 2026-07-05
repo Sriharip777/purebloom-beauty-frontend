@@ -1,11 +1,14 @@
 import { motion } from 'framer-motion';
 import ImageSlider3D from '../../components/common/ImageSlider3D';
+import StarsBg from '../../components/ui/StarsBg';
 import mybrandImg from '../../assets/images/mybrand.png';
+import hariImg from '../../assets/images/hari.png';
 
 export default function AboutPage() {
   return (
-    <div className="py-16 lg:py-24 bg-white dark:bg-navy transition-colors duration-300">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="py-16 lg:py-24 bg-white dark:bg-navy relative transition-colors duration-300">
+      <div className="hidden dark:block absolute inset-0"><StarsBg /></div>
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="text-center mb-16">
           <p className="text-xs text-bloom-500 uppercase tracking-[0.2em] font-sans font-medium mb-3">Our Story</p>
           <h1 className="font-serif text-4xl lg:text-6xl text-navy dark:text-cream-100">About PureBloom Beauty</h1>
@@ -49,7 +52,14 @@ export default function AboutPage() {
             <p className="text-xs text-bloom-500 uppercase tracking-[0.2em] font-sans font-medium mb-3">Our Team</p>
             <h2 className="font-serif text-2xl lg:text-3xl text-navy dark:text-cream-100">Meet the Team</h2>
           </div>
-          <ImageSlider3D />
+          <ImageSlider3D
+            images={[
+              { src: hariImg, name: 'Hari' },
+              { src: hariImg, name: 'Hari' },
+            ]}
+            cardWidth="14em"
+            duration={25}
+          />
         </motion.div>
       </div>
     </div>

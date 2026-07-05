@@ -39,7 +39,7 @@ export default function ImageSlider3D({
   const renderCard = (img, i) => (
     <div
       key={i}
-      className={`col-start-1 row-start-1 rounded-2xl overflow-hidden shadow-2xl ${imageClassName}`}
+      className={`col-start-1 row-start-1 rounded-2xl overflow-hidden shadow-2xl group ${imageClassName}`}
       style={{
         width: cardWidth,
         aspectRatio: cardAspectRatio,
@@ -51,11 +51,11 @@ export default function ImageSlider3D({
       <img
         src={img.src}
         alt={img.name}
-        className="w-full h-full object-cover"
+        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
         loading="lazy"
       />
-      <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent p-4 pt-10">
-        <p className="text-white text-sm font-semibold font-sans tracking-wide">
+      <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent p-5 pt-12">
+        <p className="text-white text-sm font-semibold font-sans tracking-wide group-hover:translate-y-[-2px] transition-transform duration-300">
           {img.name}
         </p>
       </div>
@@ -64,7 +64,7 @@ export default function ImageSlider3D({
 
   return (
     <div
-      className={`grid w-full h-full min-h-[580px] overflow-hidden place-items-center ${containerClassName}`}
+      className={`grid w-full h-full min-h-[420px] overflow-hidden place-items-center ${containerClassName}`}
       style={{
         perspective: perspective,
         ...maskStyles,

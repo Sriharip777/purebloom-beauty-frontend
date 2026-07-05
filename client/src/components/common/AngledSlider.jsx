@@ -102,7 +102,7 @@ function AngledCard({ item, angle, hoverScale, cardWidth }) {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <div className="relative h-full w-full overflow-hidden border border-white/10 bg-cream-100 min-h-[260px] shadow-2xl rounded-2xl">
+      <div className="relative h-full w-full overflow-hidden border border-white/10 bg-cream-100 min-h-[200px] shadow-2xl rounded-2xl">
         <img
           src={item.url}
           alt={item.alt || ""}

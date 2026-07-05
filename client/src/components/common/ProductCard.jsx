@@ -73,7 +73,7 @@ export default function ProductCard({ product, index = 0, cardStyle }) {
         onMouseEnter={() => setIsHovered(true)}
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
-        className="group bg-white shadow-sm hover:shadow-2xl transition-shadow duration-500"
+        className="group bg-white rounded-2xl border border-cream-100/50 shadow-sm hover:shadow-2xl transition-all duration-500"
         style={is3D ? {
           rotateX,
           rotateY,
@@ -83,13 +83,12 @@ export default function ProductCard({ product, index = 0, cardStyle }) {
       >
         <Link to={`/products/${product.slug}`} className="block">
           <div
-            className="relative overflow-hidden bg-cream-50"
-            style={is3D ? { borderRadius: '1.25rem' } : {}}
+            className={`relative overflow-hidden bg-cream-50 ${is3D ? 'rounded-2xl' : 'rounded-t-2xl'}`}
           >
             <motion.img
               src={product.image}
               alt={product.title}
-              className="w-full aspect-[3/4] object-cover"
+              className="w-full aspect-[4/5] object-cover"
               style={is3D ? { backfaceVisibility: 'hidden' } : {}}
               animate={{ scale: isHovered ? 1.08 : 1 }}
               transition={{ duration: 0.6, ease: 'easeOut' }}
@@ -97,13 +96,12 @@ export default function ProductCard({ product, index = 0, cardStyle }) {
 
             {is3D && (
               <div
-                className="absolute inset-0 pointer-events-none"
+                className="absolute inset-0 rounded-2xl pointer-events-none"
                 style={{
                   background: isHovered
                     ? 'linear-gradient(135deg, rgba(255,255,255,0.25) 0%, transparent 50%, rgba(0,0,0,0.08) 100%)'
                     : 'linear-gradient(135deg, rgba(255,255,255,0.12) 0%, transparent 40%)',
                   transition: 'background 0.4s ease',
-                  borderRadius: '1.25rem',
                 }}
               />
             )}
@@ -141,42 +139,42 @@ export default function ProductCard({ product, index = 0, cardStyle }) {
           </div>
         </Link>
 
-        <div className="pt-3 pb-4">
-          <p className="text-[10px] text-navy-400 uppercase tracking-[0.12em] font-sans mb-1">{brand}</p>
+        <div className="pt-2.5 pb-3 px-3">
+          <p className="text-[9px] text-navy-400 uppercase tracking-[0.15em] font-sans font-medium mb-1">{brand}</p>
           <Link to={`/products/${product.slug}`}>
-            <h3 className="text-sm font-medium text-navy leading-snug hover:text-navy-600 transition-colors">
+            <h3 className="text-sm font-semibold text-navy leading-snug line-clamp-2 hover:text-bloom-500 transition-colors">
               {product.title}
             </h3>
           </Link>
 
           <div className="flex items-center gap-1.5 mt-1.5">
-            <HiOutlineStar size="11" className="text-amber-400 fill-current" />
-            <span className="text-[11px] text-navy-600 font-sans">{product.rating}</span>
-            <span className="text-[10px] text-navy-300 font-sans">({product.reviewCount})</span>
+            <HiOutlineStar size="10" className="text-amber-400 fill-current" />
+            <span className="text-[10px] text-navy-500 font-sans font-medium">{product.rating}</span>
+            <span className="text-[9px] text-navy-300 font-sans">({product.reviewCount})</span>
           </div>
 
           <div className="flex items-center gap-2 mt-2">
-            <span className="text-sm font-semibold text-navy">Rs{product.price.toLocaleString()}</span>
+            <span className="text-sm font-bold text-navy">Rs{product.price.toLocaleString()}</span>
             {product.originalPrice > product.price && (
-              <span className="text-[11px] text-navy-300 line-through font-sans">Rs{product.originalPrice.toLocaleString()}</span>
+              <span className="text-[10px] text-navy-300 line-through font-sans">Rs{product.originalPrice.toLocaleString()}</span>
             )}
           </div>
 
-          <div className="flex items-center gap-1.5 mt-2">
+          <div className="flex items-center gap-1.5 mt-2 mb-1">
             {swatches.slice(0, 4).map((color, i) => (
-              <span key={i} className="w-3 h-3 rounded-full border border-cream-200" style={{ backgroundColor: color }} />
+              <span key={i} className="w-2.5 h-2.5 rounded-full border border-cream-200" style={{ backgroundColor: color }} />
             ))}
-            <span className="text-[9px] text-navy-300 font-sans ml-0.5">+</span>
+            <span className="text-[8px] text-navy-300 font-sans ml-0.5">+</span>
           </div>
 
           <motion.button
             onClick={handleAffiliateClick}
             whileHover={{ scale: 1.04 }}
             whileTap={{ scale: 0.96 }}
-            className="w-full mt-3 text-[10px] font-medium tracking-[0.12em] uppercase text-white py-2.5 border-t border-cream-200 transition-all flex items-center justify-center gap-1.5 relative overflow-hidden group/btn rounded-lg bg-gradient-to-r from-emerald-400 to-emerald-500 hover:from-emerald-500 hover:to-emerald-600 shadow-sm hover:shadow-[0_4px_20px_rgba(16,185,129,0.35)]"
+            className="w-full mt-2 text-[9px] font-semibold tracking-[0.15em] uppercase text-white py-2.5 transition-all flex items-center justify-center gap-1.5 relative overflow-hidden group/btn rounded-xl bg-gradient-to-r from-emerald-400 to-emerald-500 hover:from-emerald-500 hover:to-emerald-600 shadow-sm hover:shadow-[0_4px_20px_rgba(16,185,129,0.35)]"
           >
             <span className="relative z-10 flex items-center gap-1.5">
-              <HiOutlineExternalLink size="11" /> Buy Now
+              <HiOutlineExternalLink size="10" /> Buy Now
             </span>
             <motion.span
               className="absolute inset-0 bg-white/15 opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300"

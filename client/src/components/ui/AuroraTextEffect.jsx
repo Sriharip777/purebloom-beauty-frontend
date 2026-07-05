@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { cn } from '../../lib/utils';
 
 const keyframes = `
   @keyframes aurora-1 {
@@ -34,38 +34,79 @@ const keyframes = `
   }
 `;
 
-const layers = [
-  { color: 'bg-bloom-300', anim: 'aurora-1', speed: 5 },
-  { color: 'bg-rose-300', anim: 'aurora-2', speed: 5 },
-  { color: 'bg-beige-300', anim: 'aurora-3', speed: 3 },
-  { color: 'bg-bloom-200', anim: 'aurora-4', speed: 13 },
-];
-
-export default function AuroraTextEffect({ children, className = '' }) {
-  const ref = useRef(null);
-
-  useEffect(() => {
-    const style = document.createElement('style');
-    style.textContent = keyframes;
-    document.head.appendChild(style);
-    return () => { document.head.removeChild(style); };
-  }, []);
-
+export default function AuroraTextEffect({
+  text,
+  className,
+  textClassName,
+  fontSize = 'clamp(3rem, 8vw, 7rem)',
+  colors = {
+    first: 'bg-bloom-300',
+    second: 'bg-rose-300',
+    third: 'bg-beige-300',
+    fourth: 'bg-bloom-200',
+  },
+  blurAmount = 'blur-lg',
+  animationSpeed = {
+    border: 6,
+    first: 5,
+    second: 5,
+    third: 3,
+    fourth: 13,
+  },
+}) {
   return (
-    <span ref={ref} className={`relative inline-block ${className}`}>
-      {children}
-      <div className="absolute inset-0 z-10 mix-blend-lighten pointer-events-none" aria-hidden>
-        {layers.map((l, i) => (
-          <div
-            key={i}
-            className={`absolute w-[120%] h-[120%] -top-[10%] -left-[10%] ${l.color} blur-2xl opacity-70`}
-            style={{
-              borderRadius: '37% 29% 27% 27% / 28% 25% 41% 37%',
-              animation: `aurora-border 6s ease-in-out infinite, ${l.anim} ${l.speed}s ease-in-out infinite alternate`,
-            }}
-          />
-        ))}
+    <div className={cn('bg-white dark:bg-black flex items-center justify-center overflow-hidden', className)}>
+      <style>{keyframes}</style>
+      <div className="text-center">
+        <h2
+          className={cn('font-extrabold tracking-tight relative overflow-hidden text-black dark:text-white', textClassName)}
+          style={{ fontSize }}
+        >
+          {text}
+          <div className="absolute inset-0 z-10 mix-blend-lighten dark:mix-blend-darken pointer-events-none">
+            <div
+              className={cn('absolute w-[60vw] h-[60vw] rounded-[37%_29%_27%_27%/28%_25%_41%_37%] filter mix-blend-overlay', colors.first, blurAmount)}
+              style={{
+                animationName: 'aurora-border, aurora-1',
+                animationDuration: `${animationSpeed.border}s, ${animationSpeed.first}s`,
+                animationTimingFunction: 'ease-in-out, ease-in-out',
+                animationIterationCount: 'infinite, infinite',
+                animationDirection: 'normal, alternate',
+              }}
+            />
+            <div
+              className={cn('absolute w-[60vw] h-[60vw] rounded-[37%_29%_27%_27%/28%_25%_41%_37%] filter mix-blend-overlay', colors.second, blurAmount)}
+              style={{
+                animationName: 'aurora-border, aurora-2',
+                animationDuration: `${animationSpeed.border}s, ${animationSpeed.second}s`,
+                animationTimingFunction: 'ease-in-out, ease-in-out',
+                animationIterationCount: 'infinite, infinite',
+                animationDirection: 'normal, alternate',
+              }}
+            />
+            <div
+              className={cn('absolute w-[60vw] h-[60vw] rounded-[37%_29%_27%_27%/28%_25%_41%_37%] filter mix-blend-overlay', colors.third, blurAmount)}
+              style={{
+                animationName: 'aurora-border, aurora-3',
+                animationDuration: `${animationSpeed.border}s, ${animationSpeed.third}s`,
+                animationTimingFunction: 'ease-in-out, ease-in-out',
+                animationIterationCount: 'infinite, infinite',
+                animationDirection: 'normal, alternate',
+              }}
+            />
+            <div
+              className={cn('absolute w-[60vw] h-[60vw] rounded-[37%_29%_27%_27%/28%_25%_41%_37%] filter mix-blend-overlay', colors.fourth, blurAmount)}
+              style={{
+                animationName: 'aurora-border, aurora-4',
+                animationDuration: `${animationSpeed.border}s, ${animationSpeed.fourth}s`,
+                animationTimingFunction: 'ease-in-out, ease-in-out',
+                animationIterationCount: 'infinite, infinite',
+                animationDirection: 'normal, alternate',
+              }}
+            />
+          </div>
+        </h2>
       </div>
-    </span>
+    </div>
   );
 }

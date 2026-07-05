@@ -87,8 +87,9 @@ export default function QuickViewModal({ product, open, onClose }) {
                     <HiOutlineExternalLink size="13" className="mr-2" />
                     View on Amazon
                   </button>
-                  <button onClick={handleWhatsApp} className="w-full flex items-center justify-center gap-2 px-6 py-3 bg-navytext-white text-[10px] font-medium tracking-[0.12em] uppercase hover:bg-navy-800 transition-all duration-300">
-                    <FaWhatsapp size="13" />
+                  <button onClick={handleWhatsApp} className="group relative w-full flex items-center justify-center gap-2 px-6 py-3 bg-gradient-to-r from-[#25D366] to-[#128C7E] text-white text-[10px] font-semibold tracking-[0.12em] uppercase rounded-full overflow-hidden shadow-md hover:shadow-[#25D366]/30 hover:shadow-lg transition-all duration-300">
+                    <span className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
+                    <FaWhatsapp size="13" className="group-hover:rotate-[-8deg] transition-transform duration-300" />
                     Ask on WhatsApp
                   </button>
                   <button

@@ -107,50 +107,50 @@ export default function ManageProductsPage() {
     }
   };
 
-  if (loading) return <div className="text-center py-12"><div className="w-10 h-10 border-4 border-navy/20 border-t-navy rounded-full animate-spin mx-auto" /></div>;
+  if (loading) return <div className="text-center py-12"><div className="w-10 h-10 border-4 border-navy/20 dark:border-navy-700 border-t-navy dark:border-t-navy-300 rounded-full animate-spin mx-auto" /></div>;
 
   if (showForm) {
     return (
       <div>
         <div className="flex items-center justify-between mb-6">
-          <h2 className="font-serif text-2xl text-navy">{editing ? 'Edit Product' : 'New Product'}</h2>
-          <button onClick={() => setShowForm(false)} className="text-xs text-navy/40 hover:text-navy font-sans">Cancel</button>
+          <h2 className="font-serif text-2xl text-navy dark:text-cream-100">{editing ? 'Edit Product' : 'New Product'}</h2>
+          <button onClick={() => setShowForm(false)} className="text-xs text-navy/40 dark:text-navy-300 hover:text-navy dark:hover:text-cream-100 font-sans">Cancel</button>
         </div>
-        <form onSubmit={handleSubmit} className="bg-white rounded-2xl card-shadow p-6 max-w-2xl space-y-4">
+        <form onSubmit={handleSubmit} className="bg-white dark:bg-navy-800 rounded-2xl card-shadow p-6 max-w-2xl space-y-4">
           <div className="grid sm:grid-cols-2 gap-4">
             <div className="sm:col-span-2">
-              <label className="block text-xs font-medium text-navy/60 font-sans mb-1">Title *</label>
-              <input type="text" value={form.title} onChange={(e) => setForm({ ...form, title: e.target.value })} className="w-full px-4 py-2.5 bg-cream-50 rounded-xl border border-cream-200 focus:border-navy/30 focus:outline-none font-sans text-sm text-navy" required />
+              <label className="block text-xs font-medium text-navy/60 dark:text-navy-300 font-sans mb-1">Title *</label>
+              <input type="text" value={form.title} onChange={(e) => setForm({ ...form, title: e.target.value })} className="w-full px-4 py-2.5 bg-cream-50 dark:bg-navy-800 rounded-xl border border-cream-200 dark:border-navy-700 focus:border-navy/30 dark:focus:border-navy-400 focus:outline-none font-sans text-sm text-navy dark:text-cream-100" required />
             </div>
             <div className="sm:col-span-2">
-              <label className="block text-xs font-medium text-navy/60 font-sans mb-1">Description</label>
-              <textarea value={form.description} onChange={(e) => setForm({ ...form, description: e.target.value })} rows="3" className="w-full px-4 py-2.5 bg-cream-50 rounded-xl border border-cream-200 focus:border-navy/30 focus:outline-none font-sans text-sm text-navy resize-none" />
+              <label className="block text-xs font-medium text-navy/60 dark:text-navy-300 font-sans mb-1">Description</label>
+              <textarea value={form.description} onChange={(e) => setForm({ ...form, description: e.target.value })} rows="3" className="w-full px-4 py-2.5 bg-cream-50 dark:bg-navy-800 rounded-xl border border-cream-200 dark:border-navy-700 focus:border-navy/30 dark:focus:border-navy-400 focus:outline-none font-sans text-sm text-navy dark:text-cream-100 resize-none" />
             </div>
             <div>
-              <label className="block text-xs font-medium text-navy/60 font-sans mb-1">Price *</label>
-              <input type="number" value={form.price} onChange={(e) => setForm({ ...form, price: e.target.value })} className="w-full px-4 py-2.5 bg-cream-50 rounded-xl border border-cream-200 focus:border-navy/30 focus:outline-none font-sans text-sm text-navy" required />
+              <label className="block text-xs font-medium text-navy/60 dark:text-navy-300 font-sans mb-1">Price *</label>
+              <input type="number" value={form.price} onChange={(e) => setForm({ ...form, price: e.target.value })} className="w-full px-4 py-2.5 bg-cream-50 dark:bg-navy-800 rounded-xl border border-cream-200 dark:border-navy-700 focus:border-navy/30 dark:focus:border-navy-400 focus:outline-none font-sans text-sm text-navy dark:text-cream-100" required />
             </div>
             <div>
-              <label className="block text-xs font-medium text-navy/60 font-sans mb-1">Original Price</label>
-              <input type="number" value={form.originalPrice} onChange={(e) => setForm({ ...form, originalPrice: e.target.value })} className="w-full px-4 py-2.5 bg-cream-50 rounded-xl border border-cream-200 focus:border-navy/30 focus:outline-none font-sans text-sm text-navy" />
+              <label className="block text-xs font-medium text-navy/60 dark:text-navy-300 font-sans mb-1">Original Price</label>
+              <input type="number" value={form.originalPrice} onChange={(e) => setForm({ ...form, originalPrice: e.target.value })} className="w-full px-4 py-2.5 bg-cream-50 dark:bg-navy-800 rounded-xl border border-cream-200 dark:border-navy-700 focus:border-navy/30 dark:focus:border-navy-400 focus:outline-none font-sans text-sm text-navy dark:text-cream-100" />
             </div>
             <div>
-              <label className="block text-xs font-medium text-navy/60 font-sans mb-1">Category *</label>
-              <select value={form.category} onChange={(e) => setForm({ ...form, category: e.target.value })} className="w-full px-4 py-2.5 bg-cream-50 rounded-xl border border-cream-200 focus:border-navy/30 focus:outline-none font-sans text-sm text-navy" required>
+              <label className="block text-xs font-medium text-navy/60 dark:text-navy-300 font-sans mb-1">Category *</label>
+              <select value={form.category} onChange={(e) => setForm({ ...form, category: e.target.value })} className="w-full px-4 py-2.5 bg-cream-50 dark:bg-navy-800 rounded-xl border border-cream-200 dark:border-navy-700 focus:border-navy/30 dark:focus:border-navy-400 focus:outline-none font-sans text-sm text-navy dark:text-cream-100" required>
                 <option value="">Select category</option>
                 {categories.map((c) => <option key={c._id} value={c._id}>{c.name}</option>)}
               </select>
             </div>
             <div>
-              <label className="block text-xs font-medium text-navy/60 font-sans mb-1">Affiliate URL *</label>
-              <input type="url" value={form.affiliateUrl} onChange={(e) => setForm({ ...form, affiliateUrl: e.target.value })} className="w-full px-4 py-2.5 bg-cream-50 rounded-xl border border-cream-200 focus:border-navy/30 focus:outline-none font-sans text-sm text-navy" required />
+              <label className="block text-xs font-medium text-navy/60 dark:text-navy-300 font-sans mb-1">Affiliate URL *</label>
+              <input type="url" value={form.affiliateUrl} onChange={(e) => setForm({ ...form, affiliateUrl: e.target.value })} className="w-full px-4 py-2.5 bg-cream-50 dark:bg-navy-800 rounded-xl border border-cream-200 dark:border-navy-700 focus:border-navy/30 dark:focus:border-navy-400 focus:outline-none font-sans text-sm text-navy dark:text-cream-100" required />
             </div>
             <div>
-              <label className="block text-xs font-medium text-navy/60 font-sans mb-1">Image</label>
+              <label className="block text-xs font-medium text-navy/60 dark:text-navy-300 font-sans mb-1">Image</label>
               <div
                 onClick={() => fileInputRef.current?.click()}
                 className={`relative flex items-center justify-center w-full h-32 rounded-xl border-2 border-dashed cursor-pointer transition-colors overflow-hidden ${
-                  form.image ? 'border-emerald-300 bg-emerald-50/50' : 'border-cream-300 bg-cream-50 hover:border-bloom-300'
+                  form.image ? 'border-emerald-300 dark:border-emerald-500 bg-emerald-50/50 dark:bg-emerald-500/10' : 'border-cream-300 dark:border-navy-600 bg-cream-50 dark:bg-navy-800 hover:border-bloom-300 dark:hover:border-bloom-500'
                 }`}
               >
                 {form.image ? (
@@ -159,19 +159,19 @@ export default function ManageProductsPage() {
                     <button
                       type="button"
                       onClick={(e) => { e.stopPropagation(); setForm({ ...form, image: '' }); }}
-                      className="absolute top-1 right-1 w-5 h-5 bg-white/80 rounded-full text-navy/60 hover:text-red-500 text-xs flex items-center justify-center"
+                      className="absolute top-1 right-1 w-5 h-5 bg-white/80 dark:bg-navy-800/80 rounded-full text-navy/60 dark:text-navy-300 hover:text-red-500 dark:hover:text-red-400 text-xs flex items-center justify-center"
                     >×</button>
                   </>
                 ) : (
                   <div className="text-center">
-                    <HiOutlinePhotograph size="24" className="mx-auto text-navy/30 mb-1" />
-                    <p className="text-xs text-navy/40 font-sans">Click to upload image</p>
-                    <p className="text-[10px] text-navy/30 font-sans mt-0.5">JPG, PNG, WebP • Max 20MB</p>
+                    <HiOutlinePhotograph size="24" className="mx-auto text-navy/30 dark:text-navy-500 mb-1" />
+                    <p className="text-xs text-navy/40 dark:text-navy-300 font-sans">Click to upload image</p>
+                    <p className="text-[10px] text-navy/30 dark:text-navy-500 font-sans mt-0.5">JPG, PNG, WebP • Max 20MB</p>
                   </div>
                 )}
                 {uploading && (
-                  <div className="absolute inset-0 bg-white/70 flex items-center justify-center">
-                    <div className="w-6 h-6 border-2 border-navy/20 border-t-navy rounded-full animate-spin" />
+                  <div className="absolute inset-0 bg-white/70 dark:bg-navy-800/70 flex items-center justify-center">
+                    <div className="w-6 h-6 border-2 border-navy/20 dark:border-navy-700 border-t-navy dark:border-t-navy-300 rounded-full animate-spin" />
                   </div>
                 )}
                 <input
@@ -184,22 +184,22 @@ export default function ManageProductsPage() {
               </div>
             </div>
             <div>
-              <label className="block text-xs font-medium text-navy/60 font-sans mb-1">Brand</label>
-              <input type="text" value={form.brand} onChange={(e) => setForm({ ...form, brand: e.target.value })} className="w-full px-4 py-2.5 bg-cream-50 rounded-xl border border-cream-200 focus:border-navy/30 focus:outline-none font-sans text-sm text-navy" />
+              <label className="block text-xs font-medium text-navy/60 dark:text-navy-300 font-sans mb-1">Brand</label>
+              <input type="text" value={form.brand} onChange={(e) => setForm({ ...form, brand: e.target.value })} className="w-full px-4 py-2.5 bg-cream-50 dark:bg-navy-800 rounded-xl border border-cream-200 dark:border-navy-700 focus:border-navy/30 dark:focus:border-navy-400 focus:outline-none font-sans text-sm text-navy dark:text-cream-100" />
             </div>
           </div>
           <div className="flex items-center gap-6 pt-2">
             <label className="flex items-center gap-2 cursor-pointer">
-              <input type="checkbox" checked={form.isTrending} onChange={(e) => setForm({ ...form, isTrending: e.target.checked })} className="w-4 h-4 rounded border-navy/30 text-navy focus:ring-navy" />
-              <span className="text-xs font-sans text-navy/60">Trending</span>
+              <input type="checkbox" checked={form.isTrending} onChange={(e) => setForm({ ...form, isTrending: e.target.checked })} className="w-4 h-4 rounded border-navy/30 dark:border-navy-500 text-navy dark:text-navy-300 focus:ring-navy dark:focus:ring-navy-400" />
+              <span className="text-xs font-sans text-navy/60 dark:text-navy-300">Trending</span>
             </label>
             <label className="flex items-center gap-2 cursor-pointer">
-              <input type="checkbox" checked={form.isBestSeller} onChange={(e) => setForm({ ...form, isBestSeller: e.target.checked })} className="w-4 h-4 rounded border-navy/30 text-navy focus:ring-navy" />
-              <span className="text-xs font-sans text-navy/60">Best Seller</span>
+              <input type="checkbox" checked={form.isBestSeller} onChange={(e) => setForm({ ...form, isBestSeller: e.target.checked })} className="w-4 h-4 rounded border-navy/30 dark:border-navy-500 text-navy dark:text-navy-300 focus:ring-navy dark:focus:ring-navy-400" />
+              <span className="text-xs font-sans text-navy/60 dark:text-navy-300">Best Seller</span>
             </label>
             <label className="flex items-center gap-2 cursor-pointer">
-              <input type="checkbox" checked={form.isDeal} onChange={(e) => setForm({ ...form, isDeal: e.target.checked })} className="w-4 h-4 rounded border-navy/30 text-navy focus:ring-navy" />
-              <span className="text-xs font-sans text-navy/60">Deal</span>
+              <input type="checkbox" checked={form.isDeal} onChange={(e) => setForm({ ...form, isDeal: e.target.checked })} className="w-4 h-4 rounded border-navy/30 dark:border-navy-500 text-navy dark:text-navy-300 focus:ring-navy dark:focus:ring-navy-400" />
+              <span className="text-xs font-sans text-navy/60 dark:text-navy-300">Deal</span>
             </label>
           </div>
           <div className="pt-2">
@@ -216,50 +216,50 @@ export default function ManageProductsPage() {
     <div>
       <div className="flex items-center justify-between mb-6">
         <div>
-          <h1 className="font-serif text-2xl lg:text-3xl text-navy">Products</h1>
-          <p className="text-sm text-navy/40 font-sans">{products.length} products</p>
+          <h1 className="font-serif text-2xl lg:text-3xl text-navy dark:text-cream-100">Products</h1>
+          <p className="text-sm text-navy/40 dark:text-navy-300 font-sans">{products.length} products</p>
         </div>
         <button onClick={handleNew} className="btn-primary text-[10px] px-5 py-2.5 flex items-center gap-1.5">
           <HiOutlinePlus size="14" /> Add Product
         </button>
       </div>
 
-      <div className="bg-white rounded-2xl card-shadow overflow-hidden">
+      <div className="bg-white dark:bg-navy-800 rounded-2xl card-shadow overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full text-sm">
             <thead>
-              <tr className="border-b border-cream-200 text-left">
-                <th className="px-4 py-3 text-xs font-medium text-navy/40 font-sans uppercase tracking-wider">Product</th>
-                <th className="px-4 py-3 text-xs font-medium text-navy/40 font-sans uppercase tracking-wider">Price</th>
-                <th className="px-4 py-3 text-xs font-medium text-navy/40 font-sans uppercase tracking-wider">Category</th>
-                <th className="px-4 py-3 text-xs font-medium text-navy/40 font-sans uppercase tracking-wider">Status</th>
-                <th className="px-4 py-3 text-xs font-medium text-navy/40 font-sans uppercase tracking-wider">Clicks</th>
-                <th className="px-4 py-3 text-xs font-medium text-navy/40 font-sans uppercase tracking-wider">Actions</th>
+              <tr className="border-b border-cream-200 dark:border-navy-700 text-left">
+                <th className="px-4 py-3 text-xs font-medium text-navy/40 dark:text-navy-300 font-sans uppercase tracking-wider">Product</th>
+                <th className="px-4 py-3 text-xs font-medium text-navy/40 dark:text-navy-300 font-sans uppercase tracking-wider">Price</th>
+                <th className="px-4 py-3 text-xs font-medium text-navy/40 dark:text-navy-300 font-sans uppercase tracking-wider">Category</th>
+                <th className="px-4 py-3 text-xs font-medium text-navy/40 dark:text-navy-300 font-sans uppercase tracking-wider">Status</th>
+                <th className="px-4 py-3 text-xs font-medium text-navy/40 dark:text-navy-300 font-sans uppercase tracking-wider">Clicks</th>
+                <th className="px-4 py-3 text-xs font-medium text-navy/40 dark:text-navy-300 font-sans uppercase tracking-wider">Actions</th>
               </tr>
             </thead>
             <tbody>
               {products.map((p) => (
-                <tr key={p._id} className="border-b border-cream-100 hover:bg-cream-50 transition-colors">
+                <tr key={p._id} className="border-b border-cream-100 dark:border-navy-700 hover:bg-cream-50 dark:hover:bg-navy-700 transition-colors">
                   <td className="px-4 py-3">
                     <div className="flex items-center gap-3">
                       {p.image && <img src={p.image} alt="" className="w-10 h-10 rounded-lg object-cover" />}
-                      <span className="text-sm font-medium text-navy font-sans truncate max-w-[200px]">{p.title}</span>
+                      <span className="text-sm font-medium text-navy dark:text-cream-100 font-sans truncate max-w-[200px]">{p.title}</span>
                     </div>
                   </td>
-                  <td className="px-4 py-3 text-sm font-sans text-navy">₹{p.price?.toLocaleString()}</td>
-                  <td className="px-4 py-3 text-sm font-sans text-navy/60">{typeof p.category === 'object' ? p.category?.name : '-'}</td>
+                  <td className="px-4 py-3 text-sm font-sans text-navy dark:text-cream-100">₹{p.price?.toLocaleString()}</td>
+                  <td className="px-4 py-3 text-sm font-sans text-navy/60 dark:text-navy-300">{typeof p.category === 'object' ? p.category?.name : '-'}</td>
                   <td className="px-4 py-3">
                     <div className="flex gap-1">
-                      {p.isTrending && <span className="text-[10px] px-2 py-0.5 rounded-full bg-bloom-100 text-bloom-700 font-sans">T</span>}
-                      {p.isBestSeller && <span className="text-[10px] px-2 py-0.5 rounded-full bg-navy text-white font-sans">BS</span>}
-                      {p.isDeal && <span className="text-[10px] px-2 py-0.5 rounded-full bg-red-50 text-red-500 font-sans">D</span>}
+                      {p.isTrending && <span className="text-[10px] px-2 py-0.5 rounded-full bg-bloom-100 dark:bg-bloom-500/20 text-bloom-700 dark:text-bloom-300 font-sans">T</span>}
+                      {p.isBestSeller && <span className="text-[10px] px-2 py-0.5 rounded-full bg-navy dark:bg-navy-700 text-white dark:text-cream-100 font-sans">BS</span>}
+                      {p.isDeal && <span className="text-[10px] px-2 py-0.5 rounded-full bg-red-50 dark:bg-red-500/10 text-red-500 dark:text-red-400 font-sans">D</span>}
                     </div>
                   </td>
-                  <td className="px-4 py-3 text-sm font-sans text-navy/60">{p.clickCount || 0}</td>
+                  <td className="px-4 py-3 text-sm font-sans text-navy/60 dark:text-navy-300">{p.clickCount || 0}</td>
                   <td className="px-4 py-3">
                     <div className="flex items-center gap-2">
-                      <button onClick={() => handleEdit(p)} className="p-1.5 text-navy/40 hover:text-navy transition-colors"><HiOutlinePencil size="16" /></button>
-                      <button onClick={() => handleDelete(p._id)} className="p-1.5 text-navy/40 hover:text-red-500 transition-colors"><HiOutlineTrash size="16" /></button>
+                      <button onClick={() => handleEdit(p)} className="p-1.5 text-navy/40 dark:text-navy-500 hover:text-navy dark:hover:text-cream-100 transition-colors"><HiOutlinePencil size="16" /></button>
+                      <button onClick={() => handleDelete(p._id)} className="p-1.5 text-navy/40 dark:text-navy-500 hover:text-red-500 dark:hover:text-red-400 transition-colors"><HiOutlineTrash size="16" /></button>
                     </div>
                   </td>
                 </tr>

@@ -42,8 +42,14 @@ export default function HomeContactSection() {
             <HiOutlineMail className="mr-2" size="14" />
             Send a Message
           </Link>
-          <button onClick={handleWhatsApp} className="btn-outline text-[10px] flex items-center gap-2">
-            <FaWhatsapp size="14" />
+          <button onClick={handleWhatsApp} className="group relative inline-flex items-center justify-center gap-2 px-8 py-3 bg-gradient-to-r from-[#25D366] to-[#128C7E] text-white text-[10px] font-medium tracking-[0.15em] uppercase rounded-full overflow-hidden shadow-md hover:shadow-[#25D366]/40 hover:shadow-lg transition-all duration-300">
+            <span className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
+            <motion.span
+              animate={{ scale: [1, 1.1, 1] }}
+              transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
+            >
+              <FaWhatsapp size="14" />
+            </motion.span>
             Chat on WhatsApp
           </button>
         </motion.div>
